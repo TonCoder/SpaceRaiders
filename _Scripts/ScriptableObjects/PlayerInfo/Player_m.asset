@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bc61d98489285648a613e96333476b3, type: 3}
+  m_Name: Player_m
+  m_EditorClassIdentifier: 
+  name: Mr.Rubber
+  _hp: 3
+  _maxHp: 10
+  _runSpeed: 1
+  _maxRunSpeed: 4
+  _dashSpeed: 0.5
+  _fireSpeed: 1
+  _HeadGear: {fileID: 0}
+  _WeaponHand: {fileID: 0}
+  _gear: {fileID: 4300030, guid: 16c4b6c36252ce14e8083291c9e774fd, type: 3}

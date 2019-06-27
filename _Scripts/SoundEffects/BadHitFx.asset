@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a7ff2bc2f595074582927d2a970d247, type: 3}
+  m_Name: BadHitFx
+  m_EditorClassIdentifier: 
+  soundcVolume: 1
+  pitch: {x: 0.45959115, y: 0.57643616}
+  _soundClip:
+  - {fileID: 8300000, guid: 80e397195ea2940b69ee7bdbded856a5, type: 3}
+  - {fileID: 8300000, guid: 89e6bc608da7b47d4914f3d9c2484e48, type: 3}
+  - {fileID: 8300000, guid: df729d213c4be44a9b55cd109f5cd4f9, type: 3}
