@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{37BE96D6-F486-B344-0AEE-B7A196162AFF}</ProjectGuid>
+    <ProjectGuid>{B43067BF-AB2D-541F-EBF2-8655F865C4AD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -60,25 +60,25 @@
      <Compile Include="Assets\_MK\MKGlowFree\Editor\SelectiveStandardShaderGUI.cs" />
      <Compile Include="Assets\PathCreator\Examples\Scripts\Editor\PathSceneToolEditor.cs" />
  <Reference Include="Cinemachine">
- <HintPath>G:/RaceRacey/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>G:/RaceRacey/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>G:/RaceRacey/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>G:/RaceRacey/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.cinemachine.editor">
- <HintPath>G:/RaceRacey/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>G:/RaceRacey/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>G:/RaceRacey/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -333,19 +333,19 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Advertisements">
- <HintPath>G:/RaceRacey/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
- <HintPath>G:/RaceRacey/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>G:/RaceRacey/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
- <HintPath>G:/RaceRacey/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Purchasing">
- <HintPath>G:/RaceRacey/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -710,11 +710,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{A4F9B012-DF18-32FA-FE18-108A1BEE49A1}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+      <Project>{E21497E0-C3E9-DE7C-FF91-0D279964A197}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
     <ProjectReference Include="PathCreator.csproj">
-      <Project>{332F3894-0AB6-9868-E55D-7DA82DF74ECC}</Project>      <Name>PathCreator</Name>    </ProjectReference>
+      <Project>{BAB3BC7B-ED04-8991-8453-EB487DF1D588}</Project>      <Name>PathCreator</Name>    </ProjectReference>
     <ProjectReference Include="PathCreatorEditor.csproj">
-      <Project>{9FCD2438-794D-513E-B567-BB079EEDB573}</Project>      <Name>PathCreatorEditor</Name>    </ProjectReference>
+      <Project>{764BFF94-6C24-DDA3-C718-8D212F3AE3D9}</Project>      <Name>PathCreatorEditor</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

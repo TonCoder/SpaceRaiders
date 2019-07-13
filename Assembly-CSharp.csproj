@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{A4F9B012-DF18-32FA-FE18-108A1BEE49A1}</ProjectGuid>
+    <ProjectGuid>{E21497E0-C3E9-DE7C-FF91-0D279964A197}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -91,6 +91,7 @@
      <Compile Include="Assets\_RaceRacey\_Scripts\ScriptableObjects\SO_GameEventListener.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\ScriptableObjects\SO_GameEvents.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\ScriptableObjects\SO_MusicList.cs" />
+     <Compile Include="Assets\_RaceRacey\_Scripts\ScriptableObjects\SO_ShipStats.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\ScriptableObjects\SO_SoundFX.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\SimplePoolManager.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\SoundFXManager.cs" />
@@ -179,25 +180,25 @@
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Sprites\Sprites-Default.shader" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
  <Reference Include="Cinemachine">
- <HintPath>G:/RaceRacey/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>G:/RaceRacey/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>G:/RaceRacey/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>G:/RaceRacey/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="com.unity.cinemachine.editor">
- <HintPath>G:/RaceRacey/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>G:/RaceRacey/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>G:/RaceRacey/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -404,13 +405,13 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
- <HintPath>G:/RaceRacey/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>G:/RaceRacey/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
- <HintPath>G:/RaceRacey/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+ <HintPath>G:/SpaceRaiders/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -760,9 +761,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="PathCreator.csproj">
-      <Project>{332F3894-0AB6-9868-E55D-7DA82DF74ECC}</Project>      <Name>PathCreator</Name>    </ProjectReference>
+      <Project>{BAB3BC7B-ED04-8991-8453-EB487DF1D588}</Project>      <Name>PathCreator</Name>    </ProjectReference>
     <ProjectReference Include="PathCreatorEditor.csproj">
-      <Project>{9FCD2438-794D-513E-B567-BB079EEDB573}</Project>      <Name>PathCreatorEditor</Name>    </ProjectReference>
+      <Project>{764BFF94-6C24-DDA3-C718-8D212F3AE3D9}</Project>      <Name>PathCreatorEditor</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

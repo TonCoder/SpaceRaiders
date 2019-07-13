@@ -6,32 +6,28 @@ public class Player_Movement : MonoBehaviour
 {
     public Rigidbody rBody;
     public Animator animtr;
+    public SO_ShipStats ship;
 
-    [Space(10)]
-
-    [Header("Vehicle Settings")]
-    [SerializeField] private float turnSpeed;
-    [SerializeField] private float drift, maxSpeed, enginePower, torque, shipVelocity;
-    [SerializeField] float torqueRamp = 0.01f;
-    [SerializeField] private bool canMoveFreely = false;
-
+    
     [Header("Lane position Settings")]
+    [SerializeField] internal bool canMoveFreely = false;
     [SerializeField] private Transform[] _lanePositions;
 
-    float torqueSpeed = 0f;
+
     float newHorizontalPos = 0;
     float power;
+    float shipVelocity;
 
     private int laneIndex = 0;
     private Vector3 nrotate;
-    private List<float> positionList = new List<float>();
+    
     bool startedTorqueRev = false;
     
     public float ShipVelocity
     {
-        get { 
-            shipVelocity = rBody.velocity.magnitude; 
-            return shipVelocity;
+        get {
+            ship.shipVelocity = rBody.velocity.magnitude; 
+            return ship.shipVelocity;
         }
     }
 
@@ -41,13 +37,6 @@ public class Player_Movement : MonoBehaviour
         animtr = GetComponentInChildren<Animator>();
         Debug.Log(_lanePositions.Length - 1);
 
-        // Set Torque value accordingly
-        torqueSpeed =  100 / torque;
-
-        for (int i = 0; i < _lanePositions.Length; i++)
-        {
-            positionList.Add(_lanePositions[i].position.z);
-        }
     }
 
  
@@ -74,12 +63,12 @@ public class Player_Movement : MonoBehaviour
     void MoveBetweenLanes()
     {
         // FIX THIS, INCASE I NEED TO CHANGE AXIS
-        newHorizontalPos = Mathf.Lerp(transform.position.z, positionList[laneIndex], turnSpeed * Time.deltaTime);
-        transform.position = new Vector3( transform.position.x, transform.position.y, newHorizontalPos);
+        newHorizontalPos = Mathf.Lerp(transform.position.x,_lanePositions[laneIndex].position.x, ship.turnSpeed * Time.deltaTime);
+        transform.position = new Vector3(newHorizontalPos, transform.position.y, transform.position.z);
     }
 
     void MoveNoConstraint(){
-        newHorizontalPos = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
+        newHorizontalPos = Input.GetAxis("Horizontal") * ship.turnSpeed * Time.deltaTime;
         Vector3 newrotate = new Vector3(0, rBody.rotation.y * newHorizontalPos, 0);
 
         Quaternion deltaRotation = Quaternion.Euler(newrotate);
@@ -89,24 +78,25 @@ public class Player_Movement : MonoBehaviour
         // calculate the current sideways speed by using the dot product. Tells us how much the ship is going left or right
         float sidewaysSpeed = Vector3.Dot(rBody.velocity, transform.right);
         // adds drift ability by setting friction
-        Vector3 sideFriction = -transform.right * (sidewaysSpeed / Time.fixedDeltaTime / drift);
+        Vector3 sideFriction = -transform.right * (sidewaysSpeed / Time.fixedDeltaTime / ship.drift);
         // applies drift
         rBody.AddForce(sideFriction, ForceMode.Acceleration);
     }
 
     void PositionIndexConstraint()
     {
-        if (Input.GetAxis("Horizontal") > 0)
+        if (Input.GetKeyDown("left"))
         {
             laneIndex--;
         }
-        else if (Input.GetAxis("Horizontal") < 0)
+        else if (Input.GetKeyDown("right"))
         {
             laneIndex++;
         }
-        if (laneIndex > positionList.Count - 1)
+        
+        if (laneIndex > (_lanePositions.Length - 1))
         {
-            laneIndex = positionList.Count - 1;
+            laneIndex = (_lanePositions.Length - 1);
         }
         if (laneIndex < 0)
         {
@@ -120,31 +110,17 @@ public class Player_Movement : MonoBehaviour
 
     void MoveForward()
     {
-        if(!startedTorqueRev)
-            StartCoroutine(IncreaseTorque());
-
-        if (shipVelocity < maxSpeed)
+        if (shipVelocity < ship.maxSpeed)
         {
             // Use CurrentGasPedalAmount as input (Vertical) value 1 and -1 (1 for forward, -1 for revers, 0 for idle)
             // rBody.AddForce(CurrentGasPedalAmount * transform.forward * enginePower * Time.fixedDeltaTime);
-            power = enginePower * torqueRamp * Time.fixedDeltaTime;
-            rBody.AddForce(transform.forward *  power);
+            power = ship.enginePower  * Time.fixedDeltaTime * ship.rampSpeed;
+            rBody.AddForce(Vector3.forward *  power);
 
             shipVelocity = rBody.velocity.magnitude;
 
         }else{
-            rBody.AddForce(transform.forward * power);
-        }
-
-    }
-
-    IEnumerator IncreaseTorque(){
-        if(startedTorqueRev) yield return 0;
-
-        yield return new WaitForSeconds(torqueSpeed);
-        if (torqueRamp < 100)
-        {
-            torqueRamp += Time.deltaTime;
+            rBody.AddForce(Vector3.forward * power);
         }
 
     }
