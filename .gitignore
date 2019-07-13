@@ -1,0 +1,28 @@
+# Ignore the following files
+# --------------------------
+# Unity3D specific
+#
+Assets/_MK/*
+Assets/_MK.meta
+Library/*
+ProjectSettings/*
+obj/*
+Assets/TZ_Futuristic Panel Textures Lite/*
+Assets/TextMesh Pro/*
+Assets/Synthwave (free)/*
+Assets/Sweet Buttons Pack1/*
+Assets/PathCreator/*
+Assets/Gizmos/*
+
+Assets/_RaceRacey/_Scenes/*
+Assets/_RaceRacey/Animation/*
+Assets/_RaceRacey/Images/*
+Assets/_RaceRacey/Materials/*
+Assets/_RaceRacey/Models/*
+Assets/_RaceRacey/prefabs/*
+
+
+
+
+# include meta files
+!*.*.meta
