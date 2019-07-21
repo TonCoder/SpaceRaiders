@@ -84,7 +84,7 @@
      <Compile Include="Assets\_RaceRacey\_Scripts\Player_Collision.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\Player_Movement.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\Player_Shoot.cs" />
-     <Compile Include="Assets\_RaceRacey\_Scripts\PlayerScript.cs" />
+     <Compile Include="Assets\_RaceRacey\_Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\ProjectileMoveForward.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\RandomCollectibleSpawner.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\RotateObject.cs" />
@@ -95,6 +95,7 @@
      <Compile Include="Assets\_RaceRacey\_Scripts\ScriptableObjects\SO_SoundFX.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\SimplePoolManager.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\SoundFXManager.cs" />
+     <Compile Include="Assets\_RaceRacey\_Scripts\SpeedBoost.cs" />
      <Compile Include="Assets\PathCreator\Examples\Scripts\GeneratePathExample.cs" />
      <Compile Include="Assets\PathCreator\Examples\Scripts\PathFollower.cs" />
      <Compile Include="Assets\PathCreator\Examples\Scripts\PathPlacer.cs" />

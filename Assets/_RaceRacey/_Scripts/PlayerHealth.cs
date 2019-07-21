@@ -4,7 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerScript : MonoBehaviour
+//***************************************************
+// Code created by Forest - Discord SN: KaijuMittens
+//***************************************************
+public class PlayerHealth: MonoBehaviour
 {
     public float maxHealth;
     public float playerHealth;
