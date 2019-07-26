@@ -9,7 +9,6 @@ public class Player_Movement : MonoBehaviour
     public Rigidbody rBody;
     public Animator animtr;
     public SO_ShipStats ship;
-    bool isBoosting = false;
     private float prevSpeed;
     float torqueRamp = 0;
     float newHorizontalPos = 0;
@@ -21,6 +20,7 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private float shipVelocity;
     [SerializeField, Range(1f, 99f)] private float boostSpeed;
     [SerializeField] private float boostTime;
+    [SerializeField] bool isBoosting = false;
 
     [Header("Lane position Settings")]
     [SerializeField] internal bool canMoveFreely = false;
@@ -32,7 +32,6 @@ public class Player_Movement : MonoBehaviour
     {
         get {
             shipVelocity = rBody.velocity.magnitude;
-            speedText.text = "Speed: " + (int) shipVelocity;
             return  shipVelocity;
         }
     }
@@ -66,7 +65,9 @@ public class Player_Movement : MonoBehaviour
     void MoveBetweenLanes()
     {
         moveBetweenLanes += Input.GetAxis("Horizontal") * ship.turnSpeed * Time.deltaTime;
-        transform.position = new Vector3(Mathf.Clamp(moveBetweenLanes, _lanePositions[0].position.x, _lanePositions[1].position.x), rBody.position.y, rBody.position.z);
+        moveBetweenLanes = Mathf.Clamp(moveBetweenLanes, _lanePositions[0].position.x, _lanePositions[1].position.x);
+
+        rBody.position = new Vector3(moveBetweenLanes, rBody.position.y, rBody.position.z);
     }
 
     void MoveNoConstraint(){
@@ -92,17 +93,16 @@ public class Player_Movement : MonoBehaviour
 
     void MoveForward()
     {
-        if (ShipVelocity < ship.maxSpeed)
-        {
-            torqueRamp += torqueRamp < ship.torque ? ship.torque * Time.deltaTime * ship.torqueRampSpeed : ship.torque;
+        if (ShipVelocity < ship.maxSpeed){
             // Use CurrentGasPedalAmount as input (Vertical) value 1 and -1 (1 for forward, -1 for revers, 0 for idle)
             // rBody.AddForce(CurrentGasPedalAmount * transform.forward * enginePower * Time.fixedDeltaTime);
-            power = ship.enginePower  * Time.fixedDeltaTime * torqueRamp;
-            rBody.AddForce(Vector3.forward *  power);
+            power = ship.enginePower * Time.fixedDeltaTime * 1 * ship.torque;
+            rBody.AddForce(Vector3.forward *  Mathf.Abs(power));
         }
-        else{
+        else {
             rBody.AddForce(Vector3.forward * power);
         }
+        // speedText.text = "Speed: " + (int)ShipVelocity;
     }
 
     public void TestBoost()
@@ -115,9 +115,11 @@ public class Player_Movement : MonoBehaviour
 
     IEnumerator Boost()
     {
+        isBoosting = true;
         float prevMass = rBody.mass;
         rBody.mass = rBody.mass - boostSpeed;
         yield return new WaitForSeconds(boostTime);
+        isBoosting = false;
         rBody.mass = prevMass;
     }
 

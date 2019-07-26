@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSpeed: 14
   drift: 1
-  maxSpeed: 60.9
+  maxSpeed: 100
   enginePower: 100000
-  torque: 12
-  torqueRampSpeed: 0.2
+  torque: 10

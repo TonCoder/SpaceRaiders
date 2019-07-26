@@ -6,12 +6,19 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public TMP_Text _clockTxt;
-    public bool isGameStarted = false;
-    public float seconds;
-    public float _elapsedTime;
+    public TextMeshProUGUI _clockTxt;
+    public TextMeshProUGUI _distanceTxt;
+    public Transform _player;
 
-    private void Awake() {
+    public bool isGameStarted = false;
+    private float _seconds;
+    private float _elapsedTime;
+
+    // Distance info
+    private Transform playerStartPos;
+
+    private void Awake()
+    {
         Singleton();
     }
 
@@ -19,27 +26,33 @@ public class GameManager : MonoBehaviour
     {
         if (isGameStarted)
         {
+            var dist = (int)Vector3.Distance(new Vector3(0, 0, 0), _player.position);
+            _distanceTxt.text = dist.ToString();
             RunClock();
         }
     }
 
-    public void StartGame(){
+    public void StartGame()
+    {
         isGameStarted = true;
+        playerStartPos = _player;
     }
 
-    public bool IsGameStarted(){
+    public bool IsGameStarted()
+    {
         return isGameStarted;
     }
 
     //********************************************
     // Button Actions
     //********************************************
-    public void Paused () { Time.timeScale = 0; }
+    public void Paused() { Time.timeScale = 0; }
 
-    public void UnPause () {
+    public void UnPause()
+    {
         Time.timeScale = 1;
     }
-    
+
     //***********************
     // Time Action
     //***********************
@@ -47,13 +60,13 @@ public class GameManager : MonoBehaviour
     {
         _elapsedTime += Time.deltaTime;
         int minutes = Mathf.FloorToInt(_elapsedTime / 60F);
-        seconds += Time.deltaTime;
+        _seconds += Time.deltaTime;
 
-        if (seconds >= 60)
+        if (_seconds >= 60)
         {
-            seconds = 0;
+            _seconds = 0;
         }
-        return string.Format("{0:00}:{1:00}", minutes, seconds);
+        return string.Format("{0:00}:{1:00}", minutes, _seconds);
     }
 
     public void RunClock()
@@ -61,11 +74,15 @@ public class GameManager : MonoBehaviour
         _clockTxt.text = Timer();
     }
 
-    void Singleton(){
-        if(instance == null || instance != this){
+    void Singleton()
+    {
+        if (instance == null || instance != this)
+        {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
-        }else{
+        }
+        else
+        {
             Destroy(this.gameObject);
         }
     }

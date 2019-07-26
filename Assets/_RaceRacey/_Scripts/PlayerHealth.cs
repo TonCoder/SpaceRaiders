@@ -12,14 +12,16 @@ public class PlayerHealth: MonoBehaviour
     public float maxHealth;
     public float playerHealth;
     public bool canBeDamaged;
+    public float invisibilityTimer = 1f;
 
-    public TextMeshProUGUI text; //This is for the HUD
+    public Slider healthSlider; //This is for the HUD
 
     // Start is called before the first frame update
     void Start()
     {
         playerHealth = maxHealth;
-        text.text = "Health: " + playerHealth;
+        healthSlider.maxValue = playerHealth;
+        healthSlider.value = playerHealth;
     }
 
     // Update is called once per frame
@@ -36,20 +38,20 @@ public class PlayerHealth: MonoBehaviour
         if (canBeDamaged)
             playerHealth = playerHealth - hitValue;
 
-        text.text = "Health: " + playerHealth;
+        healthSlider.value  = playerHealth;
         StartCoroutine(mercyInvincibility());
     }
 
     IEnumerator mercyInvincibility()
     {
         canBeDamaged = false;
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(invisibilityTimer);
         canBeDamaged = true;
     }
 
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Obstacle"){
-            loseHealth(Random.Range(10,50));
+            loseHealth(Random.Range(10,20));
             SimplePoolManager.instance.DisablePoolObject(other.transform);
         }
     }

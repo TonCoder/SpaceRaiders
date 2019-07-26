@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: a8539151157981f4fa442163b45a43a2
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: akaDylan Plain
+  fontNames:
+  - akaDylan Plain
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 9adc1a884db199245999b62810cd2585, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
