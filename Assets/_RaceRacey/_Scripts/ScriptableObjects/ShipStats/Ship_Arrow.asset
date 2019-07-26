@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385da86ccc90834479cf15fb1d16b1f4, type: 3}
   m_Name: Ship_Arrow
   m_EditorClassIdentifier: 
-  turnSpeed: 3
+  turnSpeed: 14
   drift: 1
   maxSpeed: 100
   enginePower: 100000
-  shipVelocity: 0
-  rampSpeed: 5
+  torque: 10

@@ -84,7 +84,7 @@
      <Compile Include="Assets\_RaceRacey\_Scripts\Player_Collision.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\Player_Movement.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\Player_Shoot.cs" />
-     <Compile Include="Assets\_RaceRacey\_Scripts\PlayerScript.cs" />
+     <Compile Include="Assets\_RaceRacey\_Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\ProjectileMoveForward.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\RandomCollectibleSpawner.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\RotateObject.cs" />
@@ -95,6 +95,7 @@
      <Compile Include="Assets\_RaceRacey\_Scripts\ScriptableObjects\SO_SoundFX.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\SimplePoolManager.cs" />
      <Compile Include="Assets\_RaceRacey\_Scripts\SoundFXManager.cs" />
+     <Compile Include="Assets\_RaceRacey\_Scripts\SpeedBoost.cs" />
      <Compile Include="Assets\PathCreator\Examples\Scripts\GeneratePathExample.cs" />
      <Compile Include="Assets\PathCreator\Examples\Scripts\PathFollower.cs" />
      <Compile Include="Assets\PathCreator\Examples\Scripts\PathPlacer.cs" />
@@ -147,6 +148,7 @@
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Transparent\MK_Transparent-DiffuseBumped.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsLuminance\UI\UI-Lit-Refraction.shader" />
+     <None Include="Assets\SimpleFX\Materials\UnlitVertexColour_Alpha.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsSelective\Legacy\Other\MK_Mobile-Diffuse.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsLuminance\UI\UI-DefaultETC1.shader" />
      <None Include="Assets\_MK\MKGlowFree\Shaders\VariantsLuminance\UI\UI-Lit-Detail.shader" />
