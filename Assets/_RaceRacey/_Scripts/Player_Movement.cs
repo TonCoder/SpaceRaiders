@@ -1,33 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_Movement : MonoBehaviour
 {
     public Rigidbody rBody;
     public Animator animtr;
     public SO_ShipStats ship;
+    private float prevSpeed;
+    float torqueRamp = 0;
+    float newHorizontalPos = 0;
+    float power;
+    float moveBetweenLanes;
 
-    
+    [Header("Boost Settings")]
+    [SerializeField] private TextMeshProUGUI speedText;
+    [SerializeField] private float shipVelocity;
+    [SerializeField, Range(1f, 99f)] private float boostSpeed;
+    [SerializeField] private float boostTime;
+    [SerializeField] bool isBoosting = false;
+
     [Header("Lane position Settings")]
     [SerializeField] internal bool canMoveFreely = false;
     [SerializeField] private Transform[] _lanePositions;
-
-
-    float newHorizontalPos = 0;
-    float power;
-    float shipVelocity;
-
     private int laneIndex = 0;
-    private Vector3 nrotate;
-    
-    bool startedTorqueRev = false;
-    
+
+
     public float ShipVelocity
     {
         get {
-            ship.shipVelocity = rBody.velocity.magnitude; 
-            return ship.shipVelocity;
+            shipVelocity = rBody.velocity.magnitude;
+            return  shipVelocity;
         }
     }
 
@@ -35,17 +40,13 @@ public class Player_Movement : MonoBehaviour
     void Start()
     {
         animtr = GetComponentInChildren<Animator>();
-        Debug.Log(_lanePositions.Length - 1);
-
     }
-
  
     void Update(){
-        if(!canMoveFreely){
-            PositionIndexConstraint();
+        if (GameManager.instance.IsGameStarted())
+        {
+            SetMoveDirectionForAnimation();
         }
-
-        SetMoveDirectionForAnimation();
     }
 
     void FixedUpdate()
@@ -55,16 +56,18 @@ public class Player_Movement : MonoBehaviour
                 MoveNoConstraint();
             else
                 MoveBetweenLanes();
-            
+ 
             MoveForward();
         }
     }
 
+
     void MoveBetweenLanes()
     {
-        // FIX THIS, INCASE I NEED TO CHANGE AXIS
-        newHorizontalPos = Mathf.Lerp(transform.position.x,_lanePositions[laneIndex].position.x, ship.turnSpeed * Time.deltaTime);
-        transform.position = new Vector3(newHorizontalPos, transform.position.y, transform.position.z);
+        moveBetweenLanes += Input.GetAxis("Horizontal") * ship.turnSpeed * Time.deltaTime;
+        moveBetweenLanes = Mathf.Clamp(moveBetweenLanes, _lanePositions[0].position.x, _lanePositions[1].position.x);
+
+        rBody.position = new Vector3(moveBetweenLanes, rBody.position.y, rBody.position.z);
     }
 
     void MoveNoConstraint(){
@@ -83,26 +86,6 @@ public class Player_Movement : MonoBehaviour
         rBody.AddForce(sideFriction, ForceMode.Acceleration);
     }
 
-    void PositionIndexConstraint()
-    {
-        if (Input.GetKeyDown("left"))
-        {
-            laneIndex--;
-        }
-        else if (Input.GetKeyDown("right"))
-        {
-            laneIndex++;
-        }
-        
-        if (laneIndex > (_lanePositions.Length - 1))
-        {
-            laneIndex = (_lanePositions.Length - 1);
-        }
-        if (laneIndex < 0)
-        {
-            laneIndex = 0;
-        }
-    }
 
     void SetMoveDirectionForAnimation(){
         animtr.SetFloat("roll", Input.GetAxis("Horizontal"));
@@ -110,19 +93,35 @@ public class Player_Movement : MonoBehaviour
 
     void MoveForward()
     {
-        if (shipVelocity < ship.maxSpeed)
-        {
+        if (ShipVelocity < ship.maxSpeed){
             // Use CurrentGasPedalAmount as input (Vertical) value 1 and -1 (1 for forward, -1 for revers, 0 for idle)
             // rBody.AddForce(CurrentGasPedalAmount * transform.forward * enginePower * Time.fixedDeltaTime);
-            power = ship.enginePower  * Time.fixedDeltaTime * ship.rampSpeed;
-            rBody.AddForce(Vector3.forward *  power);
-
-            shipVelocity = rBody.velocity.magnitude;
-
-        }else{
+            power = ship.enginePower * Time.fixedDeltaTime * 1 * ship.torque;
+            rBody.AddForce(Vector3.forward *  Mathf.Abs(power));
+        }
+        else {
             rBody.AddForce(Vector3.forward * power);
         }
-
+        // speedText.text = "Speed: " + (int)ShipVelocity;
     }
+
+    public void TestBoost()
+    {
+        if (!isBoosting)
+        {
+            StartCoroutine(Boost());
+        }
+    }
+
+    IEnumerator Boost()
+    {
+        isBoosting = true;
+        float prevMass = rBody.mass;
+        rBody.mass = rBody.mass - boostSpeed;
+        yield return new WaitForSeconds(boostTime);
+        isBoosting = false;
+        rBody.mass = prevMass;
+    }
+
 
 }

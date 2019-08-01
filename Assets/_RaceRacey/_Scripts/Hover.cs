@@ -6,6 +6,8 @@ public class Hover : MonoBehaviour
 {
     public float hoverHeight;
     public float hoverStrength;
+
+    [Tooltip("The amount of force used to push ship back to the ground")]
     public float HoverGravityForce;
     public float OrientationToGroundSpeed;
 
@@ -44,13 +46,7 @@ public class Hover : MonoBehaviour
             // Does the ray intersect any objects excluding the player layer
             if (Physics.Raycast(hoverSpots[i].position, Vector3.down, out _groundRaycastHit, hoverHeight, ~layerToIgnore))
             {
-                // If distance between vehicle and ground is higher than target height, we apply a force from up to
-                // bottom (gravity) to push the vehicle down.
-                if (_groundRaycastHit.distance > hoverHeight)
-                {
-                    // Vehicle is too high, We apply gravity force
-                    rbody.AddForce(-Vector3.up * HoverGravityForce * Time.fixedDeltaTime, ForceMode.Acceleration);
-                }else{
+                if(_groundRaycastHit.distance <= hoverHeight){
                     IsGrounded = true;
 
                     // we determine the distance between current vehicle height and wanted height
@@ -62,16 +58,13 @@ public class Hover : MonoBehaviour
                     //  rbody.AddForceAtPosition(Vector3.up * force * Time.fixedDeltaTime, ForceMode.Acceleration);
                     rbody.AddForceAtPosition(Vector3.up * hoverStrength * (1.0f - (_groundRaycastHit.distance / hoverHeight)), hoverSpots[i].position);
                 }
-
             }
-            // else{
-
-            //     if(transform.position.y > hoverSpots[i].position.y){
-            //         rbody.AddForceAtPosition(hoverSpots[i].up * hoverStrength, hoverSpots[i].position);
-            //     }else{
-            //         rbody.AddForceAtPosition(hoverSpots[i].up * -hoverStrength, hoverSpots[i].position);
-            //     }
-            // }
+            else 
+            {
+                // If distance between vehicle and ground is higher than target height, we apply a force from up to
+                // bottom (gravity) to push the vehicle down.
+                rbody.AddForce(-Vector3.up * HoverGravityForce, ForceMode.Force);
+            }
 
         }   
     }
