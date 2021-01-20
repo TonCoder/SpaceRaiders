@@ -1,6 +1,6 @@
 This files are part of a collaboration project for teaching and learning Game Dev, as part of the GameDevPro meetups.
 
-***Feel free to grab it and change things around. Most or all information here was created by the "students"
+*** Feel free to grab it and change things around. Most or all information here was created by the "students"
 
 
 Copyright 2019 GameDevProWorkshop
